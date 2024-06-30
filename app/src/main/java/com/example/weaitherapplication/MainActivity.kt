@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity()
 {
     private lateinit var mCityName:EditText
     private lateinit var bTemp:Button
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
