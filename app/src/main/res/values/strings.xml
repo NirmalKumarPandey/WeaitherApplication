@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeaitherApplication</string>
+    <string name="city_name">Enter City name</string>
+    <string name="get_temperature">Temperature</string>
+</resources>
