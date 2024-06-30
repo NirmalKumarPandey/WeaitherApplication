@@ -4,12 +4,13 @@ package com.example.weaitherapplication
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.weaitherapplication.Network.WeatherApplication
+import com.example.weaitherapplication.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,20 +20,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity()
 {
-    private lateinit var mCityName:EditText
-    private lateinit var bTemp:Button
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-         mCityName=findViewById(R.id.city_name)
-         bTemp=findViewById(R.id.get_temperature)
-        bTemp.setOnClickListener(View.OnClickListener {
-            fetchWeatherData(mCityName.text.toString().trim());
-        })
-
-
-
+        binding=DataBindingUtil.setContentView(this,R.layout.activity_main)
+        val cityObj=City("Hello Nirmal Kumar","Temperature")
+        binding.city=cityObj
+        binding.temperature.setOnClickListener {
+            fetchWeatherData( binding.cityName.text.toString());
+        }
     }
     private fun fetchWeatherData(name: String)
     {
