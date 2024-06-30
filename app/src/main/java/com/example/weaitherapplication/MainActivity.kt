@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weaitherapplication.Network.WeatherApplication
+import com.example.weaitherapplication.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,21 +22,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity()
 {
-    // Comment Testing on Particular Branch
-    private lateinit var mCityName:EditText
-    private lateinit var bTemp:Button
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-         mCityName=findViewById(R.id.city_name)
-         bTemp=findViewById(R.id.get_temperature)
-        bTemp.setOnClickListener(View.OnClickListener {
-            fetchWeatherData(mCityName.text.toString().trim());
-        })
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-
-
+        binding.getTemperature.setOnClickListener {
+            fetchWeatherData(binding.cityName.text.toString());
+        }
     }
     private fun fetchWeatherData(name: String)
     {
