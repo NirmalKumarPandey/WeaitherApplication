@@ -4,8 +4,6 @@ package com.example.weaitherapplication
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -25,7 +23,9 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)
-        val cityObj=City("Hello Nirmal Kumar","Temperature")
+        // You can do in this way also
+      //  binding=ActivityMainBinding.inflate(layoutInflater)
+        val cityObj= City("Mr Nirmal Kumar","Temperature")
         binding.city=cityObj
         binding.temperature.setOnClickListener {
             fetchWeatherData( binding.cityName.text.toString());

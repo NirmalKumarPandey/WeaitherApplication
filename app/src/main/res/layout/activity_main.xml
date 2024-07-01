@@ -7,6 +7,7 @@
        <variable
            name="city"
            type="com.example.weaitherapplication.City" />
+
    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
